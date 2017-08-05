@@ -11,15 +11,15 @@ var UserSchema = new mongoose.Schema({
 
 var User = mongoose.model('User',UserSchema);
 
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var myObj = { "name":"Zachary", address:"Highway 37"};
-/*  db.collection("Customers").insertOne(myObj,function(err,res) {
-      if (err) throw err;
-      console.log("One user inserted");
-      db.close();
-  }); */
-});
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var myObj = { "name":"Zachary", address:"Highway 37"};
+// /*  db.collection("Customers").insertOne(myObj,function(err,res) {
+//       if (err) throw err;
+//       console.log("One user inserted");
+//       db.close();
+//   }); */
+// });
 
 var app = express();
 
