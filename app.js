@@ -36,7 +36,7 @@ mongoose.connect(config.database);
 
 
 //Initialize App Handlers
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (port));
 
 app.use(express.static(__dirname + '/public'));
 
@@ -80,6 +80,6 @@ function requiresLogin(req,res,next) {
 /// App running
 ///
 
-app.listen(app.get('port'), function() {
+app.listen(port, function() {
     console.log('Node app is running on port', app.get('port'));
 });
