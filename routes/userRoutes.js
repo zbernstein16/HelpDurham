@@ -32,7 +32,7 @@ app.post('/authenticate', function(req,res) {
     if(err) {
       return res.json({success:false,msg:"Error connecting to database"})
     } if(!user) {
-      res.json({success: false, msg: 'Authentication failed. User not found.'})
+      res.json({success: false, msg: 'Authentication failed. User not found.' + req.body.email})
     } else {
       user.comparePassword(req.body.password,function(err,isMatch) {
         if(isMatch && !err) {
