@@ -11,6 +11,10 @@ var EventSchema = new mongoose.Schema({
     orgName: {
       type:String,
       required:true
+    },
+    orgEmail: {
+      type:String,
+      required:true
     }
 });
 

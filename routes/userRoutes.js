@@ -27,12 +27,12 @@ app.post('/signup',function(req,res) {
   }
 })
 
-app.post('/authenticate', function(req,res) {
+app.post('/authenticate',function(req,res) {
   User.findOne({email:req.body.email},function(err,user) {
     if(err) {
       return res.json({success:false,msg:"Error connecting to database"})
     } if(!user) {
-      res.json({success: false, msg: 'Authentication failed. User not found.' + req.body.email})
+      res.json({success: false, msg: 'Authentication failed. User not found.'})
     } else {
       user.comparePassword(req.body.password,function(err,isMatch) {
         if(isMatch && !err) {

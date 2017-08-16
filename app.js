@@ -8,6 +8,9 @@ var config      = require('./config/database'); // get db config file
 var User        = require('./models/user'); // get the mongoose model
 var port        = process.env.PORT || 8080;
 var jwt         = require('jwt-simple');
+var cors = require('cors');
+
+app.use(cors())
 
 
 //Configure passport
@@ -45,14 +48,6 @@ app.use(session({
   resave:true,
   saveUninitialized:false
 }));
-
-app.all('*', function(req, res, next) {
-     var origin = req.get('origin');
-     res.header('Access-Control-Allow-Origin', origin);
-     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-     res.header('Access-Control-Allow-Headers', 'Content-Type');
-     next();
-});
 
 ///
 /// Default Handlers

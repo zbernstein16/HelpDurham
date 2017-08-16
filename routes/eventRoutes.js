@@ -50,7 +50,7 @@ app.get('/events', function(req, res) {
             return res.json({success: false, msg: 'Authentication failed'});
           } else {
           //Query by Date
-          if (typeof req.query.date !== undefined && req.query.date !== '') {
+          if (req.query.date !== undefined) {
               console.log("Query by Date");
               //Date format YYYY-MM-DD
               var onDateString = req.query.date;
@@ -70,7 +70,7 @@ app.get('/events', function(req, res) {
               return
           }
           //Query by title
-          if (req.query.title !== undefined && req.query.date !== '') {
+          if (req.query.title !== undefined) {
               console.log("Query event by Name");
               var eventTitle = req.query.title;
               Event.find({
@@ -83,6 +83,23 @@ app.get('/events', function(req, res) {
                   }
               });
               return
+          }
+
+
+          //Query by email
+          if(req.query.email !== undefined) {
+            console.log('Query by email')
+            var eventEmail = req.query.email;
+            Event.find({
+              email:eventEmail
+            },function(error,events) {
+              if(error) {
+                return res.json({success:false,msg:'Failed to find events'})
+              } else {
+                return res.json({success:true,events:events});
+              }
+            });
+            return
           }
 
           return res.json({success:false, msg:'Failed to find events'});
