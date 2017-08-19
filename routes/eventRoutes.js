@@ -19,6 +19,7 @@ app.post('/events', function(req, res) {
         var desc = req.body.desc;
         var orgName = req.body.orgName;
         var date = new Date(req.body.date);
+        var orgEmail = req.body.orgEmail;
 
         console.log(title + " " + desc + " " + orgName);
 
@@ -28,10 +29,11 @@ app.post('/events', function(req, res) {
             title: title,
             desc: desc,
             orgName: orgName,
-            date: date
+            date: date,
+            orgEmail:orgEmail
         }, function(err) {
             if (err) {
-                return res.json({success:false, msg:'Failed to post'});
+                return res.json({success:false, msg:'Failed to post', err:err});
             } else {
                 return res.json({success:true, msg:'Event Posted'});
             }

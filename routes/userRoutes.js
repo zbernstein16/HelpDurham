@@ -37,7 +37,7 @@ app.post('/authenticate',function(req,res) {
       user.comparePassword(req.body.password,function(err,isMatch) {
         if(isMatch && !err) {
           var token = jwt.encode(user,config.secret);
-          res.json({success: true, token:'JWT ' + token})
+          res.json({success: true, token:'JWT ' + token, user:user})
         } else {
           res.json({success: false, msg: 'Authentication failed. Wrong email or password.'});
         }
