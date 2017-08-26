@@ -23,7 +23,7 @@ app.post('/events', function(req, res) {
 
         console.log(title + " " + desc + " " + orgName);
 
-
+        //Need to check if event already exists, then update if true
 
         Event.create({
             title: title,
